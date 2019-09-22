@@ -1,0 +1,643 @@
+.go{
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    border-radius: 50%;
+    right: 30px;
+    top: 30px;
+    z-index: 1001;
+}
+.more{
+    /*width: 100px;*/
+    /*height: 100px*/
+    position: fixed;
+    /*border-radius: 50%;*/
+    right:60px;
+    bottom: 80px;
+    z-index: 1001;
+    animation: more 0.4s linear infinite alternate ;
+
+}
+/*第一屏内容*/
+.content{
+    width: 900px;
+    height: 600px;
+    /*background: rgba(0,0,0,.2);*/
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    margin-left: -450px;
+}
+.screen01{
+    background: url("../images/01-bg.png") no-repeat center bottom;
+
+}
+.screen01 .goods{
+    text-align: center;
+    margin-top: 230px;
+}
+.screen01 .sofa{
+    position: absolute;
+    left: 230px;
+    top: 150px;
+    animation: sofa01 1.2s linear infinite alternate ;
+}
+.screen01 .fly{
+position: absolute;
+    right: -50px;
+    top: 20px;
+    animation: fly01 1s linear infinite alternate ;
+}
+/*第一屏动画*/
+/*布局===定位  动画使用位移*/
+@keyframes fly01 {
+    from{
+        transform: translateY(-50px);
+    }to{
+        transform: translateY(50px);
+
+         }
+}
+@keyframes sofa01 {
+    from{
+        transform: translateY(-30px);
+    }to{
+         transform: translateY(30px);
+
+     }
+}
+@keyframes more{
+    from{
+        transform: translateY(-20px);
+    }to{
+         transform: translateY(20px);
+
+     }
+}
+
+/*第二屏内容*/
+.screen02{
+    background: url("../images/02-bg.png") no-repeat center bottom;
+
+}
+.screen02 .goods{
+    position: absolute;
+    left: 50%;
+    margin-left: -220px;
+    bottom:210px;
+    transform-origin: right;
+    transform: scale(0);
+}
+.screen02 .sofa{
+position: absolute;
+    transform: scale(0.5);
+    left: 292px;
+    top:131px;
+    opacity: 0;
+    z-index: 1001;
+}
+.screen02 .input{
+    position: absolute;
+    right: 171px;
+    top:120px;
+    /*右上角 transform: scale(0.7);*/
+    /*中心位置transform:translate(-180px,130px) ;*/
+    /*最右边位置==开始位置transform:translate(2000px,130px) ;*/
+    transform-origin: right top;
+    opacity: 0;
+}
+.screen02 .input .search{
+    position: relative;
+    right: 0px;
+    top:0px;
+    transform: scale(0.7);
+}
+.screen02 .input .key{
+position: absolute;
+    left: 100px;
+    top: 4px;
+    transform: scale(0.7);
+    opacity: 0;
+
+}
+.screen02 .text{
+    text-align: center;
+}
+.screen02 .text .text01{
+    /*position: absolute;*/
+    /*淡入*/
+}
+.screen02 .text .text02{
+position: absolute;
+    opacity: 0;
+}
+
+/*第二屏动画*/
+.screen02.now .text .text01{
+    position: absolute;
+    opacity: 0;
+}
+.screen02.now .text .text02{
+    position: static;
+    opacity: 1;
+   transition: opacity 1s;
+}
+.screen02.now .input{
+    animation: input02 3s linear forwards;
+}
+.screen02.now .input .key{
+opacity: 1;
+    transition:all 1s linear 1s ;
+}
+.screen02.now .goods{
+    /*清空所有属性*/
+    transform:none;
+    transition: transform  1s linear 2s;
+}
+@keyframes input02 {
+    0%{
+        transform:translate(2000px,130px);
+        opacity: 1;
+    }33%{
+             transform:translate(-180px,130px);
+             opacity: 1;
+         }67%{
+                       transform:translate(-180px,130px);
+                    opacity: 1;
+                   }100%{
+                                           opacity: 1;
+                               transform: scale(0.7)
+                                       }
+}
+/*沙发 离开第二屏 和页面滚动同步*/
+.screen02.leaved .sofa{
+animation: sofa02 0.7s linear ;
+}
+@keyframes sofa02 {
+    from{
+        opacity: 1;
+    }to{
+        opacity: 1;
+    transform:translate(-80px,800px);
+         }
+}
+/*第三屏*/
+.screen03{
+    background: url("../images/03-bg.png") no-repeat bottom center;
+}
+/*沙发做动画*/
+.screen03 .sofa{
+    position: absolute;
+    left: 216px;
+      top:188px;
+    display: none;
+          }
+.screen03 .change{
+    position: absolute;
+    right: 115px;
+    bottom: 170px;
+}
+.screen03 .change img:last-child{
+    position: absolute;
+    opacity: 0;
+}
+.screen03 .change {
+    position: absolute;
+    right: 116px;
+    bottom: 173px;
+}
+.screen03  .cart{
+    position: absolute;
+    right: 192px;
+    bottom: 100px;
+}
+.screen03 .cart img:last-child{
+    position: absolute;
+    opacity: 0;
+}
+.screen03.now .change img:first-child{
+ display: none;
+}
+.screen03.now .change img:last-child{
+    position: static;
+    opacity: 1;
+    transition:all 1s linear;
+}
+.screen03.now .cart img:first-child{
+    display: none;
+}
+.screen03.now .cart img:last-child{
+    position: static;
+    opacity: 1;
+    transition:all 1s linear;
+}
+.screen03.now .sofa{
+    z-index: 1001;
+    display: block;
+}
+.screen03.leaved .sofa{
+animation: sofa03 0.7s linear;
+    /*transform:translate(200px,690px) rotate(45deg) ;*/
+
+}
+@keyframes sofa03 {
+    from{
+
+    }to{
+             transform:translate(200px,690px) rotate(45deg) ;
+         }
+}
+/*第四屏*/
+.screen04{
+    background: url("../images/04-bg.png") no-repeat bottom center;
+}
+.screen04 .cloud{
+    position: absolute;
+    left: 0;
+    top:-50px;
+    animation: clouds 10s linear infinite alternate;
+}
+@keyframes clouds {
+    from{
+    }to{
+             transform:translateX(1000px);
+         }
+}
+.screen04 .text{
+    text-align: center;
+    margin-top: 100px;
+}
+.screen04 .text img:last-child{
+    position: absolute;
+    opacity: 0;
+
+}
+.screen04 .text.show img:first-child{
+    position: absolute;
+    opacity: 0;
+
+}
+.screen04 .text.show img:last-child{
+    position: static;
+    opacity: 1;
+    transition: all 1s linear;
+
+}
+.screen04  .cart{
+    position: absolute;
+       left: 238px;
+    margin-top: 60px;
+    z-index: 1010;
+}
+
+.screen04  .sofa{
+    top:-55px;
+    left: 163px;
+    transform:rotate(29deg) ;
+    opacity: 0;
+    z-index: -1;
+    /*display: none;*/
+    position: absolute;
+}
+.screen04.now  .sofa{
+    /*display: block;*/
+
+    transform: translateX(1000px);
+    transition: transform 2s 1s;
+    opacity: 1;
+
+}
+.screen04.now .car{
+    transition: all 2s 1s;
+    transform: translateX(1000px);
+}
+
+/*jquery的动画$（‘dom’）.animate(property,duration,speed,callback)*/
+.screen04 .address{
+      width: 283px;
+      height: 270px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 140px;
+    display: none;
+}
+.screen04 .address img:last-child{
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 165px;
+    display: none;
+}
+/*第五屏布局*/
+.screen05{
+    background: url("../images/05-bg.png") no-repeat bottom center;
+
+}
+.screen05 .sofa{
+    /*display: none;*/
+    position: absolute;
+    left: 100px;
+    bottom: 90px;
+    transform:rotate(0deg);
+    opacity: 0;
+
+}
+.screen05 .card{
+    position: absolute;
+    left: 0;
+    top: 180px;
+}
+.screen05 .card .cardimg{
+    position: relative;
+    z-index: 1;
+}
+.screen05 .card .orderimg{
+    position: absolute;
+    left: 130px;
+    top: -80px;
+    transform: translateY(80px);
+}
+.screen05 .mouse{
+    position: absolute;
+    right: 0;
+    top: 0px;
+    width: 400px;
+    height:100%;
+    overflow: hidden;
+}
+.screen05 .mouse .m1,.screen05 .mouse .m2{
+position: absolute;
+    right: 0;
+    top: -430px;
+}
+.screen05 .mouse .m2{
+    /*display: none;*/
+    opacity: 0;
+}
+
+.screen05  .hand{
+    position: absolute;
+    top: 260px;
+    right:50px;
+    transform: translateY(500px);
+}
+/*动画*/
+.screen05.now  .hand{
+    transition: all 1s linear;
+    transform: none;
+}
+.screen05.now .mouse .m2{
+    transition: all 0.2s linear 1s;
+    opacity: 1;
+}
+.screen05.now .sofa{
+animation: sofa05 1s linear 1s  forwards;
+}
+@keyframes sofa05 {
+    from{
+        transform:translateY(-1000px);
+        opacity: 1;
+    }50%{
+         transform:translateY(-150px) rotate(0deg);
+         }to{
+                opacity: 1;
+                transform: rotate(0deg);
+                   }
+}
+.screen05.now .card .orderimg{
+    transform: none;
+    transition: all 1s linear 2.2s;
+}
+.screen05.leaved .sofa{
+animation:sofa05-06 1s linear ;
+}
+@keyframes sofa05-06 {
+    from{
+        opacity: 1;
+
+        transform: rotate(30deg);
+    }
+    to{
+        z-index: 1001;
+        opacity: 1;
+        transform: translateY(490px) scale(0.2) rotate(30deg);
+    }
+}
+/*第六屏*/
+.screen06{
+    background: url("../images/06-bg.png") no-repeat -100px bottom ;
+
+}
+.screen06.now{
+    transition: background 1s linear 1s;
+    background: url("../images/06-bg.png") no-repeat 100% bottom ;
+}
+.screen06 .cloud{
+    position: absolute;
+    top: -50px;
+    left: 0;
+}
+.screen06 .cloud img:last-child{
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: cloud06 30s linear infinite alternate;
+}
+.screen06 .cloud img:first-child{
+  animation: cloud06 40s linear infinite alternate;
+}
+@keyframes cloud06 {
+    from{}
+    to{
+        transform: translateX(1000px);
+    }
+}
+.screen06 .text{
+    position: absolute;
+    top: 80px;
+    left: 100px;
+}
+.screen06 .text img:last-child{
+    position: absolute;
+    opacity: 0;
+
+}
+.screen06 .box{
+    position: absolute;
+    left: 135px;
+    top: 160px;
+    z-index: 1111;
+}
+.screen06.show .box{
+   animation:box06 2s linear forwards;
+}
+@keyframes box06 {
+    from{
+        transform: translateX(-500px);
+    }50%{
+             transform:none
+         }to{
+                       transform:translateY(340px) scale(0.3)
+                   }
+}
+.screen06 .car{
+    position: absolute;
+    bottom: 0;
+    left: 110px;
+    z-index: 1112;
+}
+.screen06 .car img{
+    position: absolute;
+    opacity: 0;
+}
+.screen06 .car .buyerimg{
+    left: 160px;
+    top: -50px;
+}
+.screen06 .car .carimg{
+    opacity: 1;
+    position: relative;
+}
+.screen06 .car .addressimg{
+    left: 160px;
+    top: -50px;
+}
+.screen06.now .car .buyerimg{
+  opacity: 1;
+    transition: all 0.25s linear 1.3s;
+}
+.screen06.now .car .addressimg{
+    opacity: 1;
+    transition: all 0.25s linear 2s;
+}
+.screen06.now  .worker{
+   position: absolute;
+    bottom: 20px;
+    left: 0px;
+    transform-origin: left bottom;
+    animation: worker 1.5s linear 2s forwards;
+    z-index: 111;
+}
+@keyframes worker {
+    from{
+        transform: scale(0);
+        opacity: 1;
+    }33.3%{
+       transform: scale(1) translateY(-100px);
+
+         }66.7%{
+                       transform: scale(1) translateY(-100px) translateY(-95px);
+                   }100%{
+                        opacity: 1;
+                         transform: scale(1) translateY(-10px) translateX(220px);
+                                       }
+}
+.screen06 .say{
+    right: -280px;
+    top: -400px;
+    opacity: 0;
+}
+.screen06.now .say{
+    transition: all 0.5s linear 4.1s ;
+    opacity:1;
+
+}
+.screen06 .person{
+    width: 106px;
+    height: 150px;
+    right: -34px;
+    bottom: 117px;
+    position: absolute;
+}
+.screen06 .person .door{
+    opacity: 0;
+}
+.screen06 .person .personimg{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    /*opacity: 0;*/
+    transform: scale(0);
+    transform-origin: right bottom;
+}
+.screen06.now .person .door{
+    opacity: 1;
+    transition: all 0.4s linear 4.6s;
+}
+.screen06.now .person .personimg{
+    transform: scale(0.8) ;
+    right:200px;
+    opacity: 1;
+    transition: transform 0.4s linear 5s,right 0.4s linear 5.4s;
+}
+.screen06.now .text img:last-child{
+    opacity: 1;
+    transition: all 1s linear 4.6s;
+}
+.screen06.now .text img:first-child{
+    opacity: 0;
+    transition: all 0.1s linear 4.6s;
+}
+/*第七屏*/
+.screen07{
+    background: url("../images/07-bg.png") no-repeat bottom center;
+
+}
+.screen07 .star{
+    position: absolute;
+    left: 158px;
+    top: 140px;
+}
+.screen07 .star img{
+    float: left;
+    margin-right: 6px;
+    display: none;
+}
+
+.screen07 .text{
+    position: absolute;
+    left: 160px;
+    top: 180px;
+    opacity: 0;
+    transform-origin: left bottom;
+    transform: scale(0);
+}
+.screen07.now .text{
+transform: scale(1.2);
+    opacity: 1;
+    transition: all 1s linear 1s;
+}
+/*第八屏*/
+.screen08{
+    background: url("../images/08-bg.png")  bottom center;
+
+}
+.screen08 .btn{
+    width: 389px;
+    height: 160px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.screen08 .btn img:last-child{
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+.screen08 .btn:hover img:last-child{
+    opacity: 1;
+}
+.screen08 .again{
+    position: absolute;
+    right: 0;
+    top: 100px;
+}
+.screen08 .hand{
+    position: absolute;
+    left: 50%;
+    top:100px;
+    transform: translateX(-50%);
+}
